@@ -1,0 +1,74 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+<center>email:{{request.session.email}}
+</center>
+
+
+<div class="card bg-light">
+<article class="card-body mx-auto" style="max-width: 400px;">
+	<h4 class="card-title mt-3 text-center">FillUp The Detail....!</h4>
+	<p class="text-center">Book Your Appointment Now</p>
+	<p>
+		
+	</p>
+	<p class="divider-text">
+        <span class="bg-light"></span>
+    </p>
+	<form action="{% url 'insert' %}" method="POST">
+	{% csrf_token %}
+	<div class="form-group input-group">
+		<div class="input-group-prepend">
+		
+		</div>
+		
+	</div> <!-- form-group end.// -->
+	<div class="form-group input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+		 </div>
+		 <input name="add" class="form-control" placeholder="ADDRESS" type="text">
+	</div> <!-- form-group// -->
+	<div class="form-group">
+		<select class="form-control" name="role">
+			<option class="hidden" selected disabled>SELECT SERVICE</option>
+			<option>AC SERVICE</option>
+			<option>RO SERVICE</option>
+			<option>BEAUTY PARLOUR</option>
+			<option>MEN'S HAIRCUT</option>
+			<option>YOGA SERVICE</option>
+			<option>PLUMBING WORKS</option>
+			<option>WHASHING MACHINE</option>
+			<option>PROFESIONAL HOME CLEANING</option>
+		</select>
+	</div>
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+		 </div>
+        <input class="form-control" placeholder="{{request.session.email}}" type="email" name="email">
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+		</div>
+    	<input  class="form-control" placeholder="Phone number" type="text" name="phone">
+    </div> <!-- form-group// -->
+    
+    
+                                         
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block"> Send Request  </button>
+    </div> <!-- form-group// -->      
+    <p class="text-center">Check Your Mail For Detail Regarding Booking....!<a href=""></a> </p>                                                                 
+</form>
+</article>
+</div> <!-- card.// -->
+
+</div> 
+<!--container end.//-->
+

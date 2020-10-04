@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>List Of requests</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body> 
+  
+Email:{{request.session.email}}
+
+
+<div class="container">
+  <h2>LIST OF REQUEST</h2>
+  <p><strong>ACCEPT</strong> OR <strong>DECLINE</strong> THE REQUEST</p>            
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+          <th>Id</th>
+        <th>Address</th>
+        <th>Service</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Accept</th>
+        <th>Decline</th>
+      </tr>
+    </thead>
+    <tbody>
+       {% if alldata %}
+       {% for a in alldata %}
+      <tr>
+        <td><strong>{{a.id}}</strong></td>
+        <td><strong>{{a.address}}</strong></td>
+        <td>{{a.role}}</td>
+        <td>{{a.phone}}</td>
+        <td>{{a.email}}</td>
+        <td>
+          <form action="{% url 'accept' pk=a.id %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{a.id}}">
+            <input type="submit" value="Accept">
+          </form>
+        </td>
+        <td>
+          <form action="{% url 'decline' pk=a.id %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{a.id}}">
+            <input type="submit" value="Decline">
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+      {% endif %}
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
